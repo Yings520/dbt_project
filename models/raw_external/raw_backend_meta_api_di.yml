@@ -7,9 +7,9 @@ sources:
         description: >
           External table for backend API data loaded from S3 (Parquet format).
         external:
-          database: DEV_ALFREDX
+          database: PROD_ALFREDX
           schema: PUBLIC
-          location: "@DEV_ALFREDX.PUBLIC.raw_external_backend_meta_api_stage"
+          location: "@PROD_ALFREDX.PUBLIC.raw_external_backend_meta_api_stage"
           file_format: parquet_format
           auto_refresh: true
           stage: raw_external_backend_meta_api_stage
