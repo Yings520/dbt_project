@@ -1,0 +1,60 @@
+version: 2
+
+sources:
+  - name: PUBLIC
+    tables:
+      - name: raw_external_backend_meta_api_di
+        description: >
+          External table for backend API data loaded from S3 (Parquet format).
+        external:
+          database: DEV_ALFREDX
+          schema: PUBLIC
+          location: "@DEV_ALFREDX.PUBLIC.raw_external_backend_meta_api_stage"
+          file_format: parquet_format
+          auto_refresh: true
+          stage: raw_external_backend_meta_api_stage
+        columns:
+          - name: path
+            data_type: string
+            expression: VALUE:path::string
+            description: "API endpoint path (URL path)"
+          - name: method
+            data_type: string
+            expression: VALUE:method::string
+            description: "HTTP method type (GET/POST/etc)"
+          - name: description
+            data_type: string
+            expression: VALUE:description::string
+            description: "Functional description of the API"
+          - name: operation_id
+            data_type: string
+            expression: VALUE:operation_id::string
+            description: "Unique identifier for the API operation"
+          - name: tags
+            data_type: string
+            expression: VALUE:tags::string
+            description: "Associated API tags"
+          - name: security
+            data_type: string
+            expression: VALUE:security::string
+            description: "Security requirements"
+          - name: parameters
+            data_type: string
+            expression: VALUE:parameters::string
+            description: "Input parameter definitions"
+          - name: request_body
+            data_type: string
+            expression: VALUE:request_body::string
+            description: "Request body specifications"
+          - name: responses
+            data_type: string
+            expression: VALUE:responses::string
+            description: "Response body definitions"
+          - name: etl_time
+            data_type: timestamp
+            expression: VALUE:etl_time::timestamp_ntz
+            description: "Data update timestamp"
+          - name: pt
+            data_type: string
+            expression: VALUE:pt::string
+            description: "Partition field (YYYY-MM-DD)"
