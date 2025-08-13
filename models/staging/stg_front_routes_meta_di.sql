@@ -5,7 +5,7 @@
 
 with latest_partition as (
     select max(pt) as max_pt
-    from {{ source('PUBLIC', 'raw_external_front_routes_meata_di') }}
+    from {{ source('PUBLIC', 'raw_external_front_routes_meta_di') }}
 )
 select
 path ,
