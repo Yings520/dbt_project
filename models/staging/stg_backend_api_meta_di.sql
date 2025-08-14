@@ -1,6 +1,6 @@
 {{ config(
     materialized='incremental',
-    unique_key = ['operation_id', 'user_id']
+    unique_key = ['pt','operation_id']
 ) }}
 
 
